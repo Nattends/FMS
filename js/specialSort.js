@@ -39,8 +39,9 @@ $(document).on("click","th", function () {
                 copyTempObj[key] = array[index]
                 index++
             }
-
-            finalData.push(copyTempObj)
+            if (copyTempObj.Inf !== undefined) {
+                finalData.push(copyTempObj) 
+            }
         });
 
         try {
@@ -67,7 +68,6 @@ $(document).on("click","th", function () {
         In case the file is only showing national team, the wage/salary is always show as "-". Thus, no sorting is necessary.
         */        
         if (currencyUse === '' | timeWage === '') {
-            generateNewTable(finalData)
             isWageClick = isWageClick ? false : true 
             isTransferValueClick = null 
             break breakme ; 
@@ -86,8 +86,6 @@ $(document).on("click","th", function () {
             finalData[k].Wage = currencyUse + finalData[k].Wage + timeWage   
         }
         
-        generateNewTable(finalData)
-
         if (isWageClick === false | null ) {
             isWageClick = true
         } else {
@@ -104,7 +102,7 @@ $(document).on("click","th", function () {
         var finalData = []
 
         //Getting the data back into an array of object 
-        $('#playersTable tr').map(function(index, elem) {
+        var data = $('#playersTable tr').map(function(index, elem) {
             $("th .th-inner", this).each(function() {
                 if ($(this).text() == "Salary") {
                     isWageWriteSalary = true 
@@ -154,10 +152,6 @@ $(document).on("click","th", function () {
         });
 
         
-
-        generateNewTable(finalData)
-
-
         // Used to reverse (or not) the data for desc and asc ordering
         if (isTransferValueClick === false | null) {
             finalData.reverse()
@@ -217,10 +211,9 @@ $(document).on("click","th", function () {
         }) 
     })
 
+    
+
 
     
 });
 
-function generateNewTable(finalData) {
-    console.log('En construction')
-}

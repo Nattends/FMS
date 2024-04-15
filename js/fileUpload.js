@@ -22,7 +22,7 @@ function setupFileChangeListener(){
 }
 
 
-function setupCalculateButtonListener(){
+function setupCalculateButtonListener(initPage){
     var fileInput = document.getElementById('file-input');
     var calculateButton = document.getElementById('calculateScoresButton');
 
@@ -36,7 +36,7 @@ function setupCalculateButtonListener(){
         showSpinner();
         setTimeout(() => {
             if (isValidFile(file)) {
-                processFile(file);
+                processFile(file, initPage);
                 updateUIFromStoredSelection();
             } else {
                 resetFileInput(fileInput);

@@ -1,6 +1,7 @@
 $(document).ready(function() {
     console.log("Dom loaded");
 
+    var initPage = 0 
     loadSeedData();
     handleSelection();
     updateUIFromStoredSelection();
@@ -9,7 +10,7 @@ $(document).ready(function() {
     assignClearButton();
     editInit();
     setupFileChangeListener();
-    setupCalculateButtonListener();
+    setupCalculateButtonListener(initPage);
     toggleThemeListener();
     assignResetButton();
 
