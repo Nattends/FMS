@@ -31,7 +31,6 @@ function initializeBootstrapTable(data, initPage) {
             { field: 'Position', title: 'Position', sortable: true }
         ];
     
-
         //Init
         // Retrieve selectedRoles from localStorage and append as dynamic columns
         var selectedRoles = JSON.parse(localStorage.getItem('selectedRoles')) || [];
