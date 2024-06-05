@@ -14,6 +14,8 @@ function initializeBootstrapTable(data, initPage) {
 
     if (initPage === 0) {
         var columns = [
+            { field: "PA", title: 'PA', sortable: true },
+            { field: 'CA', title: 'CA', sortable: true},
             { field: 'Inf', title: 'Inf', sortable: true },
             { field: 'Name', title: 'Name', sortable: true },
             { field: 'Age', title: 'Age', sortable: true },
