@@ -14,13 +14,8 @@ function initializeBootstrapTable(data, initPage) {
 
     if (initPage === 0) {
         var columns = [
-            { field: "PA", title: 'PA', sortable: true },
             { field: 'CA', title: 'CA', sortable: true},
-            { field: 'Inf', title: 'Inf', sortable: true },
-            { field: 'Name', title: 'Name', sortable: true },
-            { field: 'Age', title: 'Age', sortable: true },
-            { field: 'Club', title: 'Club', sortable: true},
-            { field: 'Transfer Value', title: 'Transfer Value', sortable: true },
+            { field: "PA", title: 'PA', sortable: true },
             {
                 field: 'Wage',
                 title: useWageTitle ? 'Wage' : 'Salary',
@@ -29,6 +24,10 @@ function initializeBootstrapTable(data, initPage) {
                     return row.Wage || row.Salary;
                 }
             },
+            { field: 'Name', title: 'Name', sortable: true },
+            { field: 'Age', title: 'Age', sortable: true },
+            { field: 'Club', title: 'Club', sortable: true},
+            { field: 'Transfer Value', title: 'Transfer Value', sortable: true },
             { field: 'Nationality', title: 'Nat', titleTooltip: 'Nationality', sortable: true },
             { field: 'Position', title: 'Position', sortable: true }
         ];
