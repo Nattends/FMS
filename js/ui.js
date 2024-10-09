@@ -13,8 +13,4 @@ $(document).ready(function() {
     setupCalculateButtonListener(initPage);
     toggleThemeListener();
     assignResetButton();
-
-
-
-
 });
