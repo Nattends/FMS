@@ -5,7 +5,7 @@ var isTransferValueClick = null
 function currencyUse(finalData) {
     for(var k in finalData) {
         if (finalData[k].Wage !== '-' & finalData[k].Wage !== undefined) {                  
-            return finalData[k].Wage.match(/[$€£¥₽$¥]/g)[0] 
+            return finalData[k].Wage.match(/[$€£¥₽$¥]/g)[0]
         }
     }
     return ''
@@ -39,9 +39,8 @@ $(document).on("click","th", function () {
                 copyTempObj[key] = array[index]
                 index++
             }
-            if (copyTempObj.Inf !== undefined) {
-                finalData.push(copyTempObj) 
-            }
+            finalData.push(copyTempObj) 
+    
         });
 
         try {
@@ -122,9 +121,7 @@ $(document).on("click","th", function () {
             for(var key in copyTempObj) {
                 copyTempObj[key] = array[index++]
             }
-            if (copyTempObj.Inf !== undefined) {
-                finalData.push(copyTempObj) 
-            }
+            finalData.push(copyTempObj)
         });
 
         finalData.sort((a,b) => {
@@ -161,12 +158,14 @@ $(document).on("click","th", function () {
         }
 
         isWageClick = null 
+        console.log(finalData)
 
     // In case we order by another column 
     } else {
         isWageClick = null 
         isTransferValueClick = null 
     }
+
 
     //Replace the "wage" key into "salary" to leave the th as it was.
     if (isWageWriteSalary) {
@@ -178,6 +177,7 @@ $(document).on("click","th", function () {
             ...rest
         }))
     }
+
 
     // We put back the data in the HTML table 
     initializeBootstrapTable(finalData);

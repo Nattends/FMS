@@ -10,8 +10,7 @@ function initializeBootstrapTable(data, initPage) {
     })
 
     var useWageTitle = data.some((obj) => obj.Wage !== undefined) ; 
-
-
+ 
     if (initPage === 0) {
         var columns = [
             { field: 'CA', title: 'CA', sortable: true},
@@ -68,6 +67,9 @@ function initializeBootstrapTable(data, initPage) {
     if ($table.bootstrapTable('getData').length > 0 || $table.data('bootstrap.table')) {
         $table.bootstrapTable('destroy');
     }
+
+    data = data.filter(element => element.Name && element.Name !== "-" && element.Name !== "undefined");
+    console.log(data)
 
     $table.bootstrapTable({
         data: data,
