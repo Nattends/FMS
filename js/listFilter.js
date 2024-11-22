@@ -154,9 +154,8 @@ function selectAllRoles() {
 function preSelectRoles() {
     console.log('Button is clicked');
     selectedRoles = [{code: "afa", name: "Advanced Forward Attack"},
-        {code: "pfs", name: "Pressing Forward Support"},
         {code: "ifa", name: "Inside Forward Attack"},
-        {code: "ifs", name: "Inside Forward Support"},
+        {code: "cms", name: "Central Midfielder Support"},
         {code: "dms", name: "Defensive Midfielder Support"},
         {code: "fba", name: "Full Back Attack"},
         {code: "bpdd", name: "Ball Playing Defender Defend"},
