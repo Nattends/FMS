@@ -27,6 +27,7 @@ function initializeBootstrapTable(data, initPage) {
             { field: 'Age', title: 'Age', sortable: true },
             { field: 'Club', title: 'Club', sortable: true},
             { field: 'Transfer Value', title: 'Transfer Value', sortable: true },
+            { field: 'Min Fee Rls', title: 'Min Fee Rls', sortable: true},
             { field: 'Nationality', title: 'Nat', titleTooltip: 'Nationality', sortable: true },
             { field: 'Position', title: 'Position', sortable: true }
         ];

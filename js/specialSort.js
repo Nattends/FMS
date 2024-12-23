@@ -1,5 +1,6 @@
 var isWageClick = null
 var isTransferValueClick = null
+var isRealeaseClauseClick = null
 
 // To save the symbol of the currency use by the user 
 function currencyUse(finalData) {
@@ -93,7 +94,7 @@ $(document).on("click","th", function () {
         }
 
         isTransferValueClick = null 
-        
+        isRealeaseClauseClick = null
         
     
     } else if ($(this).attr("data-field") === "Transfer Value") {
@@ -124,6 +125,8 @@ $(document).on("click","th", function () {
             finalData.push(copyTempObj)
         });
 
+
+        // Data to sorted data
         finalData.sort((a,b) => {
             // Replace the number with the letters to the "real" number 
             // Example N°1 : 6.5K => 6500
@@ -157,13 +160,78 @@ $(document).on("click","th", function () {
             isTransferValueClick = false
         }
 
-        isWageClick = null 
+        isWageClick = null
+        isRealeaseClauseClick = null
+
+    // In case we order by min fee rls
+    } else if ($(this).attr("data-field") === "Min Fee Rls") {
+        const tempObj = {}
+        var finalData = []
+        var data = $('#playersTable tr').map(function(index, elem) {
+            $("th .th-inner", this).each(function() {
+                if ($(this).text() == "Salary") {
+                    isWageWriteSalary = true
+                }
+            })
+            $("th",this).each(function() {
+                tempObj[`${$(this).attr("data-field")}`] = "none"
+            })
+
+            var copyTempObj = {...tempObj}
+            var array = []
+
+            $("td",this).each(function() {
+                array.push($(this).text())
+            })
+            var index = 0
+            for(var key in copyTempObj) {
+                copyTempObj[key] = array[index++]
+            }
+            finalData.push(copyTempObj)
+        });
+
         console.log(finalData)
 
-    // In case we order by another column 
+        // Data to sorted data
+        finalData.sort((a, b) => {
+            const letterToNumber = (val) => {
+                if (val !== "-") {
+                    val = val.replace('£', '');
+
+                    if (val.includes('K')) {
+                        val = Number(val.replace("K", '')) * 1000;
+                    }
+                    else if (val.includes('M')) {
+                        val = Number(val.replace("M", '')) * 1000000;
+                    } else {
+                        val = Number(val);
+                    }
+                }
+                return val;
+            };
+
+            return letterToNumber(`${a["Min Fee Rls"]}`.slice(1)) - letterToNumber(`${b["Min Fee Rls"]}`.slice(1));
+        });
+
+        finalData.forEach((el) => {console.log(el['Name'], el['Min Fee Rls'])})
+
+
+        // Used to reverse (or not) the data for desc and asc ordering
+        if (isRealeaseClauseClick === false | null) {
+            finalData.reverse()
+            isRealeaseClauseClick = true
+        } else {
+            isRealeaseClauseClick = false
+        }
+
+        isWageClick = null
+        isTransferValueClick = null
+
+
     } else {
-        isWageClick = null 
-        isTransferValueClick = null 
+        isWageClick = null
+        isTransferValueClick = null
+        isRealeaseClauseClick = null
     }
 
 
@@ -197,7 +265,7 @@ $(document).on("click","th", function () {
                 })
             }
 
-            if ($(this).attr("data-field") == "Transfer Value") {
+            else if ($(this).attr("data-field") == "Transfer Value") {
                 $(".th-inner", this).each(function() {
                     if (isTransferValueClick === false) {
                         $(this).attr('class', "th-inner sortable both asc")
@@ -208,12 +276,20 @@ $(document).on("click","th", function () {
                     }
                 })
             }
+
+            else if ($(this).attr("data-field") == "Min Fee Rls") {
+                $(".th-inner", this).each(function() {
+                    if (isRealeaseClauseClick === false) {
+                        $(this).attr('class', "th-inner sortable both asc")
+                    } else if (isRealeaseClauseClick) {
+                        $(this).attr('class', "th-inner sortable both desc")
+                    } else {
+                        $(this).attr('class', "th-inner sortable both")
+                    }
+                })
+            }
         }) 
     })
 
-    
-
-
-    
 });
 
