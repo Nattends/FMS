@@ -184,16 +184,14 @@ function preSelectRoles424() {
     updateUIFromStoredSelection();
 }
 
-function preSelectRoles352() {
+function preSelectRoles4231() {
     console.log('Button is clicked');
     selectedRoles = [{code: "afa", name: "Advanced Forward Attack"},
-        {code: "cfs", name: "Complete Forward Support"},
-        {code: "sva", name: "Segundo Volante Attack"},
-        {code: "b2bs", name: "Box To Box Midfielder Support"},
-        {code: "dmd", name: "Defensive Midfielder Defend"},
-        {code: "wba", name: "Wing Back Attack"},
+        {code: "ifs", name: "inside Forward Support"},
+        {code: "ama", name: "Attacking Midfielder Attack"},
+        {code: "dms", name: "Defensive Midfielder Support"},
+        {code: "fba", name: "Full Back Attack"},
         {code: "bpdd", name: "Ball Playing Defender Defend"},
-        {code: "cdd", name: "Central Defender Defend"},
         {code: "skd", name: "Sweeper Keeper Defend"}]
 
     localStorage.setItem('selectedRoles', JSON.stringify(selectedRoles));
@@ -202,8 +200,8 @@ function preSelectRoles352() {
     updateUIFromStoredSelection();
 }
 
-$("#preSelectRoles352").click(() => {
-    preSelectRoles352()
+$("#preSelectRoles4231").click(() => {
+    preSelectRoles4231()
 });
 
 $("#preSelectRoles424").click(() => {
