@@ -1,4 +1,4 @@
-function initializeBootstrapTable(data, initPage) {
+function initializeBootstrapTable(data, initPage, isMinus21) {
 
     data = data.filter((obj) => function() {
         for(const [key, value] of Object.entries(obj)) {
@@ -8,6 +8,10 @@ function initializeBootstrapTable(data, initPage) {
         }
         return True
     })
+
+    if(isMinus21) {
+        data = data.filter(obj => obj.Age <= 21);
+    }
 
     var useWageTitle = data.some((obj) => obj.Wage !== undefined) ; 
  

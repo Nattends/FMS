@@ -7,7 +7,7 @@ function readFile(file) {
     });
 }
 
-async function processFile(file, initPage) {
+async function processFile(file, initPage, isMinus21) {
     try {
         showSpinner(); // Show spinner at the start
 
@@ -31,7 +31,7 @@ async function processFile(file, initPage) {
                 
                 const playersWithUtilityScores = calculateUtilityScores(playersWithHighestRoles);
 
-                initializeBootstrapTable(playersWithUtilityScores, initPage);
+                initializeBootstrapTable(playersWithUtilityScores, initPage, isMinus21);
             } else if (scores.errorOccurred) {
                 showToast(scores.errorMessage, 'Calculation Error', 'error');
             }

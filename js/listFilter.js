@@ -214,4 +214,8 @@ $("#preSelectRoles433").click(() => {
     preSelectRoles433()
 });
 
+$("#calculateScoresButton21").click(() => {
+    // console.log("calculateScoresButton21 clicked")
+});
+
 
