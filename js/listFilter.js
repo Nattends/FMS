@@ -199,6 +199,26 @@ function preSelectRoles424() {
     updateUIFromStoredSelection();
 }
 
+function preSelectRoles4231() {
+    console.log('Button is clicked');
+    selectedRoles = [{code: "afa", name: "Advanced Forward Attack"},
+        {code: "ifs", name: "inside Forward Support"},
+        {code: "ama", name: "Attacking Midfielder Attack"},
+        {code: "dms", name: "Defensive Midfielder Support"},
+        {code: "fba", name: "Full Back Attack"},
+        {code: "bpdd", name: "Ball Playing Defender Defend"},
+        {code: "skd", name: "Sweeper Keeper Defend"}]
+
+    localStorage.setItem('selectedRoles', JSON.stringify(selectedRoles));
+
+    updateSelectedRolesSummary();
+    updateUIFromStoredSelection();
+}
+
+$("#preSelectRoles4231").click(() => {
+    preSelectRoles4231()
+});
+
 $("#preSelectRoles424").click(() => {
     preSelectRoles424()
 });
@@ -211,5 +231,9 @@ $("#preSelectRoles3412").click(() => {
     preSelectRoles3412()
 });
 
+
+$("#calculateScoresButton21").click(() => {
+    // console.log("calculateScoresButton21 clicked")
+});
 
 

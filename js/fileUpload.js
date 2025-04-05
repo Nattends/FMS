@@ -26,6 +26,8 @@ function setupCalculateButtonListener(initPage){
     var fileInput = document.getElementById('file-input');
     var calculateButton = document.getElementById('calculateScoresButton');
 
+    var calculateButton21 = document.getElementById('calculateScoresButton21');
+
     calculateButton.addEventListener('click', function () {
         var file = fileInput.files[0];
         if (!file) {
@@ -46,6 +48,27 @@ function setupCalculateButtonListener(initPage){
             }
         }, 0);
     });
+
+    calculateButton21.addEventListener('click', function () {
+        var file = fileInput.files[0];
+        if (!file) {
+            showToast("No file selected!", "Error", "error");
+            return;
+        }
+
+        showSpinner();
+        setTimeout(() => {
+            if (isValidFile(file)) {
+                processFile(file, initPage, true);
+                updateUIFromStoredSelection();
+            } else {
+                resetFileInput(fileInput);
+                
+                updateUIFromStoredSelection();
+                hideSpinner();
+            }
+        }, 0);
+    })
 }
 
 function isValidFile(file) {
