@@ -174,6 +174,7 @@ function preSelectRoles3412() {
             {code: "b2bs", name: "Box To Box Midfielder Support"},
             {code: "dlpd", name: "Deep Lying Playmaker Defend"},
             {code: "wba", name: "Wing Back Attack"},
+            {code: "cdc", name: "Central Defender Cover"},
             {code: "wcbd", name: "Wide Centre Back Defend"},
             {code: "skd", name: "Sweeper Keeper Defend"}]
 
